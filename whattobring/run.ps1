@@ -1,3 +1,12 @@
+$requestBody = Get-Content $req -Raw | ConvertFrom-Json
+$city = $requestBody.city
+
+if (!$city -and $req_query_city) {
+    $city = $req_query_city
+} else {
+    throw "please specify a city"
+}
+
 switch ($city) {
     "austin" {
         $result = "$($city): Clothing: Jeans, shorts, t-shirts. Shoes: Boots, sandals, and sneakers. Accessories: Sunglasses, sunscreen"
