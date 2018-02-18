@@ -1,15 +1,30 @@
 $requestBody = Get-Content $req -Raw | ConvertFrom-Json
 $city = $requestBody.city
 
-if (!$city -and $req_query_city) {
-    $city = $req_query_city
-} else {
-    throw "please specify a city"
+if (!$city -and !$req_query_city) {
+    [PSCustomObject][Ordered]@{
+        'Status' = 400
+        'Body'   = "Please pass a city on the query string or in the request body"
+    } | ConvertTo-Json > $res
+
+    return
 }
 
+$city = $req_query_city
 switch ($city) {
     "austin" {
         $result = "$($city): Clothing: Jeans, shorts, t-shirts. Shoes: Boots, sandals, and sneakers. Accessories: Sunglasses, sunscreen"
+    }
+
+    "san francisco" {
+        $result = "Clothing: Jeans, t-shirts, warm windproof layer. Shoes: Comfortable shoes, sneakers. Accessories: Sunglasses, sunscreen"
+    }
+
+    "los angeles" {
+        $result = "Clothing: Jeans, t-shirts, sweatshirt, light jacket. Shoes: Flat shoes, sandals, sneakers. Accessories: Long scarves, hat"
+    }
+    "new york" {
+        $result = "Clothing: Jeans, t-shirts, shirts, sweater. Shoes: Comfortable shoes, sneakers. Accessories: Scarf, beanie hat, gloves"
     }
 }
 
