@@ -1,5 +1,24 @@
-"hello world" > $res
+switch ($city) {
+    "austin" {
+        $result = "$($city): Clothing: Jeans, shorts, t-shirts. Shoes: Boots, sandals, and sneakers. Accessories: Sunglasses, sunscreen"
+    }
+}
 
+"$($city): $($result)" > $res
+
+#  "san francisco":
+#     result = city + ": " + "Clothing: Jeans, t-shirts, warm windproof layer. Shoes: Comfortable shoes, sneakers. Accessories: Sunglasses, sunscreen"
+#     break;
+#  "los angeles":
+#     result = city + ": " + "Clothing: Jeans, t-shirts, sweatshirt, light jacket. Shoes: Flat shoes, sandals, sneakers. Accessories: Long scarves, hat"
+#     break;
+#  "new york":
+#     result = city + ": " + "Clothing: Jeans, t-shirts, shirts, sweater. Shoes: Comfortable shoes, sneakers. Accessories: Scarf, beanie hat, gloves"
+#     break;
+# # default:
+# #     result = "We dont't have any data for " + city
+
+}
 
 # module.exports = function (context, req) {
 #     context.log('JavaScript HTTP trigger function processed a request.');
